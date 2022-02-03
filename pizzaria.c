@@ -1,4 +1,4 @@
-/* Inclusıes */
+/* Inclus√µes */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -53,10 +53,10 @@ typedef void (*ordenaReceitas)(listaReceitas_t*, listaIngredientes_t*);
 typedef void (*ordenaReceitasIngredientes)(listaReceitas_t*, listaIngredientes_t*, int);
 typedef void (*ordenaIngredientesReceitas)(listaIngredientes_t*, receita_t*, receita_ingrediente_t*);
 
-/* FunÁıes */
+/* Fun√ß√µes */
 
-// funÁıes de ordenaÁ„o
-// implementaÁ„o do quicksort para ordenaÁ„o de strings
+// fun√ß√µes de ordena√ß√£o
+// implementa√ß√£o do quicksort para ordena√ß√£o de strings
 void swapString(const char** stringX, const char** stringY) {
 	const char* temporaria = *stringX;
 	*stringX = *stringY;
@@ -77,7 +77,7 @@ void quicksortString(char const** vetorString, int tamanho) {
 	quicksortString(vetorString + pivot, tamanho - pivot);
 }
 
-// implementaÁ„o do quicksort para ordenaÁ„o de inteiros
+// implementa√ß√£o do quicksort para ordena√ß√£o de inteiros
 // a implentacao utilizada foi a apresentada na aula
 // troca as posicoes de 2 interios
 void swap(int* x, int* y) {
@@ -110,10 +110,10 @@ void quicksort(int* vetor, int low, int high) {
 	}
 }
 
-// funÁıes para manipulaÁ„o dos ingredientes 
-// aloca espaÁo na memÛria para a lista de ingredientes
+// fun√ß√µes para manipula√ß√£o dos ingredientes 
+// aloca espa√ßo na mem√≥ria para a lista de ingredientes
 void alocarIngrediente(listaIngredientes_t* lista) {
-	// contabiliza o tamanho da lista, ou seja, quantos elementos h· no vetor de ingredientes, incrementando a cada novo ingrediente a ser inserido na lista 
+	// contabiliza o tamanho da lista, ou seja, quantos elementos h√° no vetor de ingredientes, incrementando a cada novo ingrediente a ser inserido na lista 
 	(lista->tamanho)++;
 	// realoca o ponteiro, adaptando para o novo tamanho da lista
 	lista->listaIngredientes = (ingrediente_t*)realloc((lista->listaIngredientes), (lista->tamanho) * sizeof(ingrediente_t));
@@ -142,13 +142,13 @@ void cadastrarIngrediente(listaReceitas_t* listaReceitas, listaIngredientes_t* l
 	lista->listaIngredientes[(lista->tamanho) - 1].criacao = lista->tamanho;
 }
 
-// procura um ingrediente na lista atravÈs de seu cÛdigo 
+// procura um ingrediente na lista atrav√©s de seu c√≥digo 
 ingrediente_t* buscarIngredienteCodigo(listaIngredientes_t* lista, int codigo) {
 	// percorre a lista ate o ingrediente ser encontrado
 	for (int i = 0; i < (lista->tamanho); i++) {
 		// armazena o codigo do ingrediente atual 
 		int atual = lista->listaIngredientes[i].codigo;
-		// se o codigo atual È igual ‡quele que estamos procurando significa que encontramos
+		// se o codigo atual √© igual √†quele que estamos procurando significa que encontramos
 		if (atual == codigo) {
 			//retorna o ponteiro para o ingrediente que possui o codigo procurado 
 			return &(lista->listaIngredientes[i]);
@@ -156,13 +156,13 @@ ingrediente_t* buscarIngredienteCodigo(listaIngredientes_t* lista, int codigo) {
 	}
 }
 
-// procura um ingrediente na lista atravÈs de seu nome
+// procura um ingrediente na lista atrav√©s de seu nome
 ingrediente_t* buscarIngredienteDescricao(listaIngredientes_t* lista, const char* descricao) {
 	// percorre a lista ate o ingrediente ser encontrado
 	for (int i = 0; i < (lista->tamanho); i++) {
 		// armazena o nome do ingrediente atual 
 		int atual = lista->listaIngredientes[i].nome;
-		// se o nome atual È igual ‡quele que estamos procurando significa que encontramos
+		// se o nome atual √© igual √†quele que estamos procurando significa que encontramos
 		if ((strcmp((lista->listaIngredientes[i].nome), descricao)) == 0) {
 			//retorna o ponteiro para o ingrediente que possui o nome procurado 
 			return &(lista->listaIngredientes[i]);
@@ -170,13 +170,13 @@ ingrediente_t* buscarIngredienteDescricao(listaIngredientes_t* lista, const char
 	}
 }
 
-// procura um ingrediente na lista atravÈs do seu numero de criacao, ou seja, da sua posicao quando foi inicializado no vetor 
+// procura um ingrediente na lista atrav√©s do seu numero de criacao, ou seja, da sua posicao quando foi inicializado no vetor 
 ingrediente_t* buscarIngredienteCriacao(listaIngredientes_t* lista, int cadastro) {
 	// percorre a lista ate o ingrediente ser encontrado
 	for (int i = 0; i < (lista->tamanho); i++) {
 		// armazena o numero de criacao do ingrediente atual 
 		int atual = lista->listaIngredientes[i].criacao;
-		// se o numero atual È igual ‡quele que estamos procurando significa que encontramos
+		// se o numero atual √© igual √†quele que estamos procurando significa que encontramos
 		if (atual == cadastro) {
 			//retorna o ponteiro para o ingrediente que possui o numero procurado 
 			return &(lista->listaIngredientes[i]);
@@ -217,7 +217,7 @@ void listarIngredientesCodigo(listaIngredientes_t* lista) {
 	free(vetor);
 }
 
-// imprime todos os ingredientes de uma lista de ingredientes ordenados, em ordem alfabÈtica, por sua descricao
+// imprime todos os ingredientes de uma lista de ingredientes ordenados, em ordem alfab√©tica, por sua descricao
 void listarIngredientesDescricao(listaIngredientes_t* lista) {
 	// cria um vetor de strings com todos os nomes dos ingredientes da lista de ingredientes
 	const char** vetor = (char**)malloc(lista->tamanho * sizeof(char*));
@@ -280,7 +280,7 @@ int selecionarOrdenacaoIngredientes() {
 	(void)fprintf(stdout, "Digite o valor desejado\n> ");
 	(void)fscanf(stdin, "%d%*c", &operacao);
 
-	// verifica se a operacao È valida 
+	// verifica se a operacao √© valida 
 	if ((operacao > 3) || (operacao < 1)) {
 		(void)fprintf(stdout, "Operacao invalida\n> ");
 		return NULL;
@@ -290,21 +290,21 @@ int selecionarOrdenacaoIngredientes() {
 	else return operacao;
 }
 
-// chama a funcao que corresponde ‡ operacao selecionada pelo usu·rio 
+// chama a funcao que corresponde √† operacao selecionada pelo usu√°rio 
 void listarIngredientes(listaReceitas_t* listaReceitas, listaIngredientes_t* listaIngredientes) {
 	// vetor do tipo ponteiro de funcao contendo as operacoes de listar ingredientes para diferentes parametros de ordenacao
 	const ordenaIngredientes funcoes[] = { listarIngredientesCodigo,  listarIngredientesDescricao, listarIngredientesCriacao };
 	// recebe o valor da operacao 
 	int operacao = selecionarOrdenacaoIngredientes();
 	if (!operacao) return;
-	// chama a funcao do vetor respectiva ‡ operacao desejada 
+	// chama a funcao do vetor respectiva √† operacao desejada 
 	funcoes[operacao - 1](listaIngredientes);
 }
 
-// funÁıes para manipulaÁ„o das receitas
-// aloca espaÁo na memÛria para a lista de receitas
+// fun√ß√µes para manipula√ß√£o das receitas
+// aloca espa√ßo na mem√≥ria para a lista de receitas
 void alocarReceita(listaReceitas_t* lista) {
-	// contabiliza o tamanho da lista, ou seja, quantos elementos h· no vetor de receitas, incrementando a cada nova receita a ser inserida na lista 
+	// contabiliza o tamanho da lista, ou seja, quantos elementos h√° no vetor de receitas, incrementando a cada nova receita a ser inserida na lista 
 	(lista->tamanho)++;
 	// realoca o ponteiro, adaptando para o novo tamanho da lista
 	lista->listaReceitas = (receita_t*)realloc((lista->listaReceitas), (lista->tamanho) * sizeof(receita_t));
@@ -338,7 +338,7 @@ void cadastrarReceita(listaReceitas_t* lista, listaIngredientes_t* listaIngredie
 	receita->receitaIngrediente = (receita_ingrediente_t*)malloc(receita->nIngredientes * sizeof(receita_ingrediente_t));
 	char* nomeAux = (char*)malloc(MAX_STRING * sizeof(char));
 	ingrediente_t* ingredienteAux;
-	// cada receita possui um vetor de inteiros onde s„o armazenados os cÛdigos dos ingredientes que ela possui
+	// cada receita possui um vetor de inteiros onde s√£o armazenados os c√≥digos dos ingredientes que ela possui
 	for (int i = 0; i < receita->nIngredientes; i++) {
 		// recebe o nome do ingrediente que a receita possui
 		(void)fprintf(stdout, "Digite o nome do %d ingrediente: ", i + 1);
@@ -359,13 +359,13 @@ void cadastrarReceita(listaReceitas_t* lista, listaIngredientes_t* listaIngredie
 	free(nomeAux);
 }
 
-// procura uma receita na lista atravÈs de seu cÛdigo 
+// procura uma receita na lista atrav√©s de seu c√≥digo 
 receita_t* buscarReceitaCodigo(listaReceitas_t* lista, int codigo) {
 	// percorre a lista ate o ingrediente ser encontrado
 	for (int i = 0; i < (lista->tamanho); i++) {
 		// armazena o codigo do ingrediente atual 
 		int atual = lista->listaReceitas[i].codigo;
-		// se o codigo atual È igual ‡quele que estamos procurando significa que encontramos
+		// se o codigo atual √© igual √†quele que estamos procurando significa que encontramos
 		if (atual == codigo) {
 			//retorna o ponteiro para o ingrediente que possui o codigo procurado 
 			return &(lista->listaReceitas[i]);
@@ -373,13 +373,13 @@ receita_t* buscarReceitaCodigo(listaReceitas_t* lista, int codigo) {
 	}
 }
 
-// procura uma receita na lista atravÈs de seu nome 
+// procura uma receita na lista atrav√©s de seu nome 
 receita_t* buscarReceitaDescricao(listaReceitas_t* lista, const char* descricao) {
 	// percorre a lista ate o ingrediente ser encontrado
 	for (int i = 0; i < (lista->tamanho); i++) {
 		// armazena o nome do ingrediente atual 
 		int atual = lista->listaReceitas[i].nome;
-		// se o nome atual È igual ‡quele que estamos procurando significa que encontramos
+		// se o nome atual √© igual √†quele que estamos procurando significa que encontramos
 		if ((strcmp((lista->listaReceitas[i].nome), descricao)) == 0) {
 			//retorna o ponteiro para o ingrediente que possui o nome procurado 
 			return &(lista->listaReceitas[i]);
@@ -387,13 +387,13 @@ receita_t* buscarReceitaDescricao(listaReceitas_t* lista, const char* descricao)
 	}
 }
 
-// procura uma receita na lista atravÈs de seu numero de criacao 
+// procura uma receita na lista atrav√©s de seu numero de criacao 
 receita_t* buscarReceitaCriacao(listaReceitas_t* lista, int criacao) {
 	// percorre a lista ate o ingrediente ser encontrado
 	for (int i = 0; i < (lista->tamanho); i++) {
 		// armazena o numero de criacao do ingrediente atual 
 		int atual = lista->listaReceitas[i].criacao;
-		// se o numero de criacao È igual ‡quele que estamos procurando significa que encontramos
+		// se o numero de criacao √© igual √†quele que estamos procurando significa que encontramos
 		if (atual == criacao) {
 			//retorna o ponteiro para o ingrediente que possui o numero de criacao procurado 
 			return &(lista->listaReceitas[i]);
@@ -494,7 +494,7 @@ int selecionarOrdenacaoReceitas() {
 	(void)fprintf(stdout, "Digite o valor desejado\n> ");
 	(void)fscanf(stdin, "%d%*c", &operacao);
 
-	// verifica se a operacao È valida 
+	// verifica se a operacao √© valida 
 	if ((operacao > 3) || (operacao < 1)) {
 		(void)fprintf(stdout, "Operacao invalida\n> ");
 		return NULL;
@@ -504,13 +504,13 @@ int selecionarOrdenacaoReceitas() {
 	else return operacao;
 }
 
-// chama a funcao que corresponde ‡ operacao selecionada pelo usu·rio
+// chama a funcao que corresponde √† operacao selecionada pelo usu√°rio
 void listarReceitas(listaReceitas_t* listaReceitas, listaIngredientes_t* listaIngredientes) {
 	const ordenaReceitas funcoes[] = { listarReceitasCodigo,  listarReceitasDescricao, listarReceitasCriacao };
 	// recebe o valor da operacao
 	int operacao = selecionarOrdenacaoReceitas();
 	if (!operacao) return;
-	// chama a funcao do vetor respectiva ‡ operacao desejada 
+	// chama a funcao do vetor respectiva √† operacao desejada 
 	funcoes[operacao - 1](listaReceitas, listaIngredientes);
 	system("pause");
 	system("cls");
@@ -522,8 +522,8 @@ listaIngredientes_t* criarListaIngredientes(receita_t* receita, listaIngrediente
 	lista->listaIngredientes = (ingrediente_t*)malloc(receita->nIngredientes * sizeof(ingrediente_t));
 	// percorre todos os ingredientes da receita 
 	for (int i = 0; i < receita->nIngredientes; i++) {
-		// para cada codigo de ingrediente salvo da receita È feita uma busca na lista de ingredientes 
-// È retornado o ponteiro para esse ingrediente, que por sua vez, È adicionado ‡ lista de ingredientes 
+		// para cada codigo de ingrediente salvo da receita √© feita uma busca na lista de ingredientes 
+// √© retornado o ponteiro para esse ingrediente, que por sua vez, √© adicionado √† lista de ingredientes 
 		lista->listaIngredientes[i] = *buscarIngredienteCodigo(lIngredientes, receita->receitaIngrediente[i].codigo);
 	}
 	lista->tamanho = receita->nIngredientes;
@@ -531,13 +531,13 @@ listaIngredientes_t* criarListaIngredientes(receita_t* receita, listaIngrediente
 	return lista;
 }
 
-// procura um ingrediente na lista de ingredientes da receita atravÈs do cÛdigo 
+// procura um ingrediente na lista de ingredientes da receita atrav√©s do c√≥digo 
 receita_ingrediente_t* buscarIngredienteReceitaCodigo(receita_t* receita, receita_ingrediente_t* receitaIngrediente, int codigo) {
 	// percorre a lista ate o ingrediente ser encontrado
 	for (int i = 0; i < (receita->nIngredientes); i++) {
 		// armazena o codigo do ingrediente atual 
 		int atual = receita->receitaIngrediente[i].codigo;
-		// se o codigo atual È igual ‡quele que estamos procurando significa que encontramos
+		// se o codigo atual √© igual √†quele que estamos procurando significa que encontramos
 		if (atual == codigo) {
 			//retorna o ponteiro para o ingrediente que possui o codigo procurado 
 			return &(receita->receitaIngrediente[i]);
@@ -566,11 +566,11 @@ void listarIngredientesReceitasCodigo(listaIngredientes_t* lista, receita_t* rec
 		(void)fprintf(stdout, "%-8d| %-10d |%s\n", (ingrediente->codigo), (qntdIngrediente->quantidade), (ingrediente->nome));
 	}
 
-	// libera a memÛria alocada 
+	// libera a mem√≥ria alocada 
 	free(vetor);
 }
 
-// imprime todos os ingredientes de uma lista de ingredientes ordenados, em ordem alfabÈtica, por sua descricao
+// imprime todos os ingredientes de uma lista de ingredientes ordenados, em ordem alfab√©tica, por sua descricao
 void listarIngredientesReceitasDescricao(listaIngredientes_t* lista, receita_t* receita, receita_ingrediente_t* receitaIngrediente) {
 	// cria um vetor de strings com todos os nomes dos ingredientes da lista de ingredientes
 	const char** vetor = (char**)malloc(lista->tamanho * sizeof(char*));
@@ -595,7 +595,7 @@ void listarIngredientesReceitasDescricao(listaIngredientes_t* lista, receita_t* 
 		(void)fprintf(stdout, "%-8d| %-10d | %s\n", (ingrediente->codigo), (qntdIngrediente->quantidade), (ingrediente->nome));
 	}
 
-	// libera a memÛria alocada
+	// libera a mem√≥ria alocada
 	for (int i = 0; i < (lista->tamanho); i++) {
 		free(vetor[i]);
 	}
@@ -623,7 +623,7 @@ void listarIngredientesReceitasCriacao(listaIngredientes_t* lista, receita_t* re
 		(void)fprintf(stdout, "%-8d| %-10d |%s\n", (ingrediente->codigo), (qntdIngrediente->quantidade), (ingrediente->nome));
 	}
 
-	// libera a memÛria alocada 
+	// libera a mem√≥ria alocada 
 	free(vetor);
 }
 
@@ -651,7 +651,7 @@ void listarReceitasIngredientesCodigo(listaReceitas_t* lReceitas, listaIngredien
 		(void)fprintf(stdout, "\n");
 	}
 
-	// libera a memÛria alocada 
+	// libera a mem√≥ria alocada 
 	free(vetorReceitas);
 }
 
@@ -708,7 +708,7 @@ void listarReceitasIngredientesCriacao(listaReceitas_t* lReceitas, listaIngredie
 		(void)fprintf(stdout, "\n");
 	}
 
-	// libera a memÛria alocada 
+	// libera a mem√≥ria alocada 
 	free(vetorReceitas);
 }
 
@@ -727,7 +727,7 @@ int selecionarOrdenacaoReceitasIngredientes(int operacao[2]) {
 	(void)fprintf(stdout, "Digite o valor desejado\n> ");
 	(void)fscanf(stdin, "%d%*c", &operacao[1]);
 
-	// verifica se a operacao È v·lida 
+	// verifica se a operacao √© v√°lida 
 	if ((operacao[0] > 3) || (operacao[0] < 1) || (operacao[1] > 3) || (operacao[1] < 1)) {
 		(void)fprintf(stdout, "Operacao invalida\n> ");
 		return 0;
@@ -735,7 +735,7 @@ int selecionarOrdenacaoReceitasIngredientes(int operacao[2]) {
 	else return 1;
 }
 
-// chama a funcao que corresponde ‡ operacao selecionada pelo usu·rio
+// chama a funcao que corresponde √† operacao selecionada pelo usu√°rio
 void listarReceitasIngredientes(listaReceitas_t* listaReceitas, listaIngredientes_t* listaIngredientes) {
 	const ordenaReceitasIngredientes funcoes[] = { listarReceitasIngredientesCodigo,  listarReceitasIngredientesDescricao, listarReceitasIngredientesCriacao };
 	int operacao[2];
@@ -768,7 +768,7 @@ int selecionaOperacao() {
 	else return operacao;
 }
 
-// inicializa uma lista de ingredientes na memÛria
+// inicializa uma lista de ingredientes na mem√≥ria
 void inicializaLista(listaIngredientes_t* lista) {
 	char const* ingredientes[] = {
 		"Mussarela",
@@ -806,7 +806,7 @@ void inicializaLista(listaIngredientes_t* lista) {
 	}
 }
 
-// lÍ os dados do arquivo a salva na memoria 
+// l√™ os dados do arquivo a salva na memoria 
 void lerArquivo(FILE* arquivo, listaReceitas_t* listaReceitas, listaIngredientes_t* listaIngredientes) {
 	(void)fscanf(arquivo, "%d %d ", &(listaIngredientes->tamanho), &(listaReceitas->tamanho));
 	listaIngredientes->listaIngredientes = (ingrediente_t*)realloc(
@@ -834,7 +834,7 @@ void lerArquivo(FILE* arquivo, listaReceitas_t* listaReceitas, listaIngredientes
 
 }
 
-// lÍ os dados da memÛria e salva no arquivo
+// l√™ os dados da mem√≥ria e salva no arquivo
 void escreverArquivo(FILE* arquivo, listaReceitas_t* listaReceitas, listaIngredientes_t* listaIngredientes) {
 	(void)fprintf(arquivo, "%d %d ", (listaIngredientes->tamanho), (listaReceitas->tamanho));
 	for (int i = 0; i < listaIngredientes->tamanho; i++) {
@@ -874,16 +874,16 @@ int main(int argc, char* argv[]) {
 	// abre o arquivo para leitura 
 	arquivo = fopen(caminhoArquivo, "rb");
 
-	// se o arquivo j· exisitr 
+	// se o arquivo j√° exisitr 
 	if (arquivo != NULL) {
-		// lÍ o arquivo e inicializa para a memÛria
+		// l√™ o arquivo e inicializa para a mem√≥ria
 		lerArquivo(arquivo, listaReceitas, listaIngredientes);
 		// fecha o arquivo
 		fclose(arquivo);
 	}
 	else {
-		// se o arquivo n„o existir 
-		// inicializa a memÛria com a lista padronizada 
+		// se o arquivo n√£o existir 
+		// inicializa a mem√≥ria com a lista padronizada 
 		inicializaLista(listaIngredientes);
 	}
 
@@ -915,6 +915,6 @@ int main(int argc, char* argv[]) {
 	free(listaIngredientes->listaIngredientes);
 	free(listaIngredientes);
 
-	// se chegou atÈ aqui È porque tudo deu certo
+	// se chegou at√© aqui √© porque tudo deu certo
 	return SUCESSO;
 }
