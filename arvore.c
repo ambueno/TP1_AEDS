@@ -1,6 +1,6 @@
 /**
  * @file   arvore.c
- * @brief  Arquivo com a implementação do TAD de arvore.
+ * @brief  Arquivo com a implementaÃ§Ã£o do TAD de arvore.
  * @author Amanda Bueno
 * @date 2021-07-10
  */
@@ -63,7 +63,7 @@ int insereArvoreIterativo(Arvore_t arvore, Prontuario_t prontuario){
 		if (resultado == 0)
 		{
 			free(novo);
-			return 1; // elemento já existe
+			return 1; // elemento jÃ¡ existe
 		}
 
 		if (resultado > 0) atual = atual->direita;
@@ -114,13 +114,13 @@ No_t buscaArvoreRecursivaNo(No_t no, Prontuario_t chave) {
 void arvoreIteraEmOrdemRecursivo(No_t no) {
 	if (no) {
 		arvoreIteraEmOrdemRecursivo(no->esquerda);
-		// operação
+		// operaÃ§Ã£o
 		arvoreIteraEmOrdemRecursivo(no->direita);
 	}
 	return;
 }
 
-static Prontuario_t removeNo(No_t no, Prontuario_t prontuario) {
+/*static Prontuario_t removeNo(No_t no, Prontuario_t prontuario) {
 	No_t aSerRemovido = buscaArvoreRecursivaNo(no->prontuario, prontuario);
 	if (!(aSerRemovido->direita)) return (aSerRemovido->esquerda);
 	if (!(aSerRemovido->esquerda)) return (aSerRemovido->direita);
@@ -142,9 +142,8 @@ static Prontuario_t removeNo(No_t no, Prontuario_t prontuario) {
 	free(aux);
 	free(sucessorPai);
 
-	return aSerRemovido->prontuario;
-	// eu sei que eu deveria dar um free no nó, mas não sei como fazê=lo sem perder o seu dado 
-}
+	return aSerRemovido->prontuario
+}*/
 
 Prontuario_t removeArvore(Arvore_t arvore, Prontuario_t prontuario) {
 	Prontuario_t prontuarioAux = (removeNo(arvore->raiz, prontuario));
