@@ -38,7 +38,7 @@ void criaNoArvore(Arvore_t arvore, Prontuario_t prontuario) {
 	else (arvore->raiz = novoNo);
 }
 
-int insereArvoreIterativo(Arvore_t arvore, Prontuario_t prontuario){
+int insereArvoreIterativo(Arvore_t arvore, Prontuario_t prontuario) {
 	if (arvore == NULL) return 1;
 	No_t novo = (No_t)malloc(sizeof(struct No_s));
 	if (novo == NULL) return 1;
@@ -47,8 +47,7 @@ int insereArvoreIterativo(Arvore_t arvore, Prontuario_t prontuario){
 	novo->direita = NULL;
 	novo->esquerda = NULL;
 
-	if (arvore->raiz == NULL)
-	{
+	if (arvore->raiz == NULL) {
 		arvore->raiz = novo;
 		return 0;
 	}
@@ -57,11 +56,9 @@ int insereArvoreIterativo(Arvore_t arvore, Prontuario_t prontuario){
 	No_t pai = NULL;
 
 	int resultado = strcmp(prontuario->nome, atual->prontuario->nome);
-	while (atual != NULL)
-	{
+	while (atual != NULL) {
 		pai = atual;
-		if (resultado == 0)
-		{
+		if (resultado == 0) {
 			free(novo);
 			return 1; // elemento já existe
 		}
