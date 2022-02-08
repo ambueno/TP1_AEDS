@@ -120,7 +120,7 @@ void arvoreIteraEmOrdemRecursivo(No_t no) {
 	return;
 }
 
-/*static Prontuario_t removeNo(No_t no, Prontuario_t prontuario) {
+static Prontuario_t removeNo(No_t no, Prontuario_t prontuario) {
 	No_t aSerRemovido = buscaArvoreRecursivaNo(no->prontuario, prontuario);
 	if (!(aSerRemovido->direita)) return (aSerRemovido->esquerda);
 	if (!(aSerRemovido->esquerda)) return (aSerRemovido->direita);
@@ -143,7 +143,7 @@ void arvoreIteraEmOrdemRecursivo(No_t no) {
 	free(sucessorPai);
 
 	return aSerRemovido->prontuario
-}*/
+}
 
 Prontuario_t removeArvore(Arvore_t arvore, Prontuario_t prontuario) {
 	Prontuario_t prontuarioAux = (removeNo(arvore->raiz, prontuario));
